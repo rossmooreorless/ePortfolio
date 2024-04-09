@@ -1,0 +1,315 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ePortfolio</title>
+    <link rel="stylesheet" href="css/style.css">
+
+    <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Pacifico">
+    <script src="https://kit.fontawesome.com/d66fe15ff7.js" crossorigin="anonymous"></script>
+</head>
+<body>
+    <header id="main-header">
+        <h1>ePortfolio</h1>
+    </header>
+
+    <nav id="nav-bar">
+        <div id="nav-left">
+            <!-- For Responsiveness, add a burger menu icon - this will be hidden on
+                larger screens and will be shown on narrow screens -->
+                <a id="burger-menu">
+                    <i class="fa-solid fa-bars"></i>
+                </a>
+
+            <div id="forward-back-buttons">
+                <a>
+                    <i class="fa-solid fa-angles-left" onclick="window.history.back()"></i>
+                </a>
+                <a onclick="window.history.back()">
+                    <i class="fa-solid fa-angles-right" onclick="window.history.back()"></i>
+                </a>
+            </div>
+
+            <ul id="nav-links">
+                <li><a href="#animation-section">Animation</a></li>
+                <li><a href="#gallery-section">Gallery</a></li>
+                <li><a href="#video-section">Video</a></li>
+                <li><a href="#audio-section">Audio</a></li>
+                <li><a href="#form-section">Form</a></li>
+                <li><a href="#map-section">Map</a></li>
+                <li><a href="#character-section">Character section</a></li>
+            </ul>
+        </div>
+        <div id="nav-right">
+            <a id="prefs-icon">
+                <i class="fa-solid fa-gear fa-bounce"></i>
+                    <span class="tool-tip">Change settings here!</span>
+            </a>
+            <div id="prefs-panel">
+                <table id="prefs-table">
+                    <tr>
+                        <td>Background Colour</td>
+                        <td>
+                            <input type="color" id="prefs-bg-color">
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Font Colour</td>
+                        <td>
+                            <input type="color" id="prefs-font-color">
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Font Size <span id="font-size" style="font-weight: bold;">18</span>px</td>
+                        <td>
+                            <input type="range" id="prefs-font-size" min="10" max="60" value="18">
+                        </td>
+                    </tr>
+                    <tr>
+                        <td id="prefs-btn-row">
+                            <button id="prefs-save">Save</button>
+                            <button id="prefs-reset">Default</button>
+                            <button id="prefs-clear">Cancel</button>
+                        </td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+    </nav>
+
+    <main id="main-container">
+        <div id="background-image">
+        <section id="welcome-section" class="main-section">
+            <h1 id="welcome-h1">Welcome <span id="user-name"></span></h1>
+
+            <div id="welcome-btn-container">
+                <button id="user-reset">Reset</button>
+                <button onclick="localStorage.clear(); userNameSpan.innerText = localStorage.getItem('UserName');">Clear All</button>
+            </div>
+            <div>
+                  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 500 100">
+                    <defs>
+                      <filter id="shadow" x="-20%" y="-20%" width="140%" height="140%">
+                        <feOffset result="offOut" in="SourceAlpha" dx="5" dy="5" />
+                        <feGaussianBlur result="blurOut" in="offOut" stdDeviation="5" />
+                        <feBlend in="SourceGraphic" in2="blurOut" mode="normal" />
+                      </filter>
+
+                    </defs>
+                    <text x="50%" y="50%" text-anchor="middle" dominant-baseline="middle"
+                      font-family="Arial, sans-serif" font-size="60" font-weight="bold"
+                      fill="rgb(7,102,82)" stroke="gold" stroke-width="2" filter="url(#shadow)">Augusta National</text>
+                      <rect x="5%" y="90%" width="90%" height="2" fill="black" />
+                  </svg> 
+            </div>
+        </section>
+
+        <section id="animation-section" class="main-section">
+            <h1 id="animation-h1">Animation</h1>
+            <div class="a-container">
+                <div class="a-box">
+                </div>
+            </div>
+
+            <div class="animation-controls">
+                <button id="a-start" class="control-btn">Start</button>
+                <button id="a-stop" class="control-btn">Stop</button>
+                <input type="range" id="a-speed" min="1" max="15" value="3">
+                <span id="a-speed-display">3 </span> seconds
+            </div>
+        </section>
+
+        <section id="gallery-section" class="main-section">
+            <h1>Image Gallery</h1>
+            <div id="g-container">
+                Hover on a preview image below to view it here!
+            </div>
+
+            <img src="images/images-eleven.png" alt="Cat one" class="preview"
+                onmouseover="loadImage(this)" onmouseout="unloadImage()">
+            
+            <img src="images/images-twelve.png" alt="Cat two" class="preview"
+                onmouseover="loadImage(this)" onmouseout="unloadImage()">
+            
+            <img src="images/images-thirteen.png" alt="Cat three" class="preview"
+                onmouseover="loadImage(this)" onmouseout="unloadImage()">
+
+            <img src="images/images-tiger.png" alt="Cat one" class="preview"
+                onmouseover="loadImage(this)" onmouseout="unloadImage()">
+            
+            <img src="images/images-rory.png" alt="Cat two" class="preview"
+                onmouseover="loadImage(this)" onmouseout="unloadImage()">
+            
+            <img src="images/images-masters-logo.png" alt="Cat three" class="preview"
+                onmouseover="loadImage(this)" onmouseout="unloadImage()">
+            
+        </section>
+
+        <section id="video-section" class="main-section">
+            <h1>Video</h1>
+            
+            <div id="yt-container">
+                <h2>Masters Final Round 2019</h2>
+                <iframe width="560" height="315" src="https://www.youtube.com/embed/oqYbG8Zhoag" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+            </div>
+
+            
+                
+            
+
+
+            <div id="hvid-container">
+                <h2>Masters Final Round 1997</h2>
+                <video controls width="560">
+                    <source src="video/1997 Masters Tournament Final Round Broadcast.mp4" type="video/mp4">
+                </video>
+            </div>
+            
+        </section>
+        
+        <section id="audio-section" class="main-section">
+            <h1>Audio - The Masters Theme Song</h1>
+             <div id="audio-container">
+                <audio controls>
+                    <source src="audio/The Masters Theme Song.mp3.mp3" type="audio/mp3">
+                </audio>
+
+             </div>
+        </section>
+
+        <section id="form-section" class="main-section">
+            <h1>Contact Form</h1>
+            <form action="#" id="contact-form" method="post">
+                <input type="text" name="i-name" class="input" placeholder="Name">
+                <input type="number" name="i-age" class="input" placeholder="Age">
+                <input type="email" name="i-email" class="input" placeholder="Email">
+
+                <label for="i-dob">Date of Birth</label>
+                <input type="date" name="i-dob" class="input">
+                
+                <label>Gender</label> <br>
+                <label for="i-gender">Male:</label>
+                <input type="radio" name="i-gender" id="radio-male" class="radio" value="male"> <br>
+                <label for="i-gender">Female:</label>
+                <input type="radio" name="i-gender" id="radio-female" class="radio" value="female"> <br>
+
+                <label for="i-options">Select an Option</label>
+                <select name="i-options">
+                    <option value="JS">JavaScript</option>
+                    <option value="HTML">HTML</option>
+                    <option value="CSS">CSS 3</option>
+                    <option value="Python">Python</option>
+                    <option value="PHP">PHP</option>
+                </select>
+
+                <textarea name="i-msg" cols="30" rows="10" placeholder="Type your message here...."></textarea>
+
+                <button type="reset">Reset</button>
+                <button type="submit">Submit</button>
+
+
+            </form>
+
+        </section>
+
+        <section id="map-section" class="main-section">
+            <h1>Map</h1>
+
+            <div class="map-container">
+                <iframe src="https://www.google.com/maps/embed?pb=!1m14!1m12!1m3!1d19019.907271320753!2d-7.900364799999998!3d53.423975000000006!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!5e0!3m2!1sen!2sie!4v1682679703729!5m2!1sen!2sie" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+            </div>
+
+            <h3>Your current location:</h3>
+            <div class="geoloc">
+                <button id="find-me">Show My Location</button>
+                <br>
+                <p id="status"></p>
+                <p id="co-ords"></p>
+            </div>
+        </section>
+
+        <section id="character-section" class="main-section">
+            <h1>Entity and Special Characters</h1>
+            <h2>Fonts, Colours, Special Characters, and the &lt;pre&gt; tag</h2>
+            <h3 class="special-chars-title">The Masters & Augusta National</h3>
+            
+            <p class="special-chars">
+                <sup>Augusta National</sup> was established in <sub>1932</sub> and from <sub>1934</sub> the club played host to The Masters Tournament until present. <br>
+                C<sub>8</sub>H<sub>10</sub>N<sub>4</sub>O<sub>2</sub> is an example of <sub>subscript</sub>. <br>
+                X<sup>2</sup> + Y<sup>2</sup> = Z<sup>2</sup> is an example of <sup>superscript</sup>.
+            </p>
+
+            <h3 class="special-chars-title">There are many Special Characters & Symbol Entities that can be used</h3>
+            <p class="special-chars">
+                There are many different special characters and symbol entities in html. <br>
+                The &#169; is a special character created using the <strong>&amp;#169;</strong> number code. 
+                &copy; can also be created using the <strong>&amp;copy;</strong> entity code. 
+            </p>
+
+            <h3 class="special-chars-title">Fonts & Colours</h3>
+            <p class="special-chars">
+                <span class="colour">
+                    <i>Augusta National Presents 'The Masters'.</i>
+                </span>
+
+                <span class="font">
+                    <b>Hosting the First of Four Golf Majors each year, defending Champion, 'Jon Rahm'.</b>
+                </span>
+            </p>
+
+            <h3 class="special-chars-title">The &lt;pre&gt; tag</h3>
+            <p class="special-chars">
+                The text in a &lt;pre&gt; element is displayed in a fixed-width font, and the text preserves both spaces and line-breaks. The text will be displayed exactly as it is typed in the html document.
+            </p>
+
+            <pre>
+                All of this text is inside a &lt;pre&gt; element.
+
+                Located      in           Georgia State          !        !       ! 
+
+        Played       During           One      Of       The       First     
+
+                    Weekends in 
+                    APRIL.
+
+            </pre>
+
+            <h3 class="special-chars-title">Opacity</h3>
+            <p class="special-chars">
+                Below is an example of <b>Opacity</b>. The semi-transparent background allows you to see the 3D effect as the paragraph rotates.
+            </p>
+
+            <div id="background">
+                <p id="spinner">Please stop, i'm getting dizzy!!!!</p>
+            </div>
+
+
+            <h3 class="special-chars-title">Link States</h3>
+            <p class="special-chars">
+                <a href="#">Clicking on this link will bring you back to the top of the page</a>
+                
+                <br>
+                <br>
+            
+                When this link is active the text will change to purple. <br>
+                When this link has been visited the text will change to green. <br>
+                When you hover on thi link the text will change to orange. <br>
+            </p>
+        </section>
+
+        <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+        </div>
+    </main>
+
+    <footer>
+        Copyright &copy; ePortfolio 2023
+    </footer>
+
+    <script src="js/main.js"></script>
+    <script src="js/map.js"></script>
+    <script src="js/animation.js"></script>
+    <script src="js/gallery.js"></script>
+</body>
+</html>
